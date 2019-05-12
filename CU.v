@@ -87,9 +87,13 @@ always @(opcode, d_out, ps) begin
       ns = Z_CHECK;
       tos = 1;
     end
+
+    //TOS2: ns = Z_CHECK;
     
-    Z_CHECK: ns = (d_out == 8'b0)?JUMP:IF;
-    
+    Z_CHECK: begin 
+      if (|d_out) ns = IF;
+      else ns = JUMP;
+    end
     JUMP: begin
       pcsrc = 1;
       ldpc = 1;

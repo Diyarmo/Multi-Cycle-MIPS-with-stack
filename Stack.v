@@ -21,7 +21,7 @@ module Stack #(parameter N = 100)(
       head = head - 1;
       d_out = mem[head];
     end
-    else if(tos) d_out = mem[head];
+    else if(tos) d_out = mem[head - 1];
   end
 endmodule
 
